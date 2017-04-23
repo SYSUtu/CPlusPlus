@@ -1,0 +1,24 @@
+1.for循环语句
+for(init-expression;cond-expression;loop-expression)
+     statement;
+init-expression:只执行一次，然后控制权转给cond-expression
+cond-expression:在执行statement的每次迭代之前，包括第一次迭代。
+loop-expression:在执行statement的每次迭代之后执行，然后把控制器转给cond-expression。
+三个条件都可以省略，第一条省略，就是没有初始化语句，第二条省略，就是没有判断条件，默认为true，第三条就是没有改变条件。
+2.范围for语句
+for(for-range-declaration:expression)
+      statement； 
+expression部分是一个对象，必须是一个序列，比方说用花括号括起来的初始值列表、数组或者vector或string等类型的对象。
+这些类型的共同特点是拥有能返回迭代器的begin和end成员。
+for-range-declaration 部分负责定义一个变量，该变量将被用于访问序列中的基础元素。
+每次迭代，for-range-declaration部分的变量会被初始化为expression部分的下一个元素值。确保类型相容最简单的办法是使用auto类型说明符。
+如果我们既想用引用，又不想改变原始值，那么可以用const 引用。
+void string_print(string &s) {
+    for (const auto &c : s)
+        std::cout << c <<  ;
+}
+如果想要改变expression对象中的值，必须把循环变量定义成引用类型。使用这个引用，我们就可以改变它绑定的元素。
+void string_toupper(string &s) {
+    for (auto &c : s)
+        c = toupper(c);
+}
