@@ -1,1 +1,82 @@
+1.定义与初始化
+string str1="yesterday once more";
+string str2 ("my heart go on");
+string str3 (str1,6);//day once more
+string str4 (str1,6,3);//day
+char ch_music[]={"Roly-Poly"};
+string str5=ch_music;
+string str6=(ch_music);
+string str7=(ch_music,4);//Roly
+string str8 (10,'i');
+string str9(ch_music+5,ch_music+9);//Poly;string s(beg,end)是以区间beg;end(不包含end)内的字符作为字符串s的初值
+2.赋值与拼接
+string str = "A woman appreciates";
+string str2 = "a man who can make her laugh";
+string str3 = str + str2;
+str.push_back('.');
+str.append("-阿拉丁");
+str.assign("dreams come true");
+str.insert(16,"!!!!");
+3.访问字符操作
+string strip4 = "iPhone 4";
+cout<<srtip4[2];//h
+cout<<strip4.at(2);//h
+string stuff;
+getline(cin,string);
+getline(cin,string,'!');//赋值后用！结束
+4.STL接口
+string str;
+str.push_back('Q');
+str.push_back('A');
+string::iterator itstr=str.begin();
+for(;itstr!=str.end();itster++){
+    cout<<*iter;
+}
+sort(str.begin(),str.end());//排序，需要头文件algorithm
+str.pop_back();//删除最后一个字符
+4.比较操作
+string str2 = "anhui";
+string str3 = "hunan";
+string str4 = "nanjing";
+str2.compare(str3);//相等返回0 大于为正数，小于为负值类似strcmp(str2,str3)
+str3.compare(3,2,str4,2,2);//an比较nj
+cout<<str4.compare(3,3,"jing",3);//输出0，与“jing”前三个字符比较
+5.查找操作
+string str = "when i wa young, i listen to the radio."
+string::size_type position;
+position = str.find("listen");//find函数返回listen第一次出现在str中的下标位置，没有找到会返回str.npos
+position = str.find("you",9);//从下标9后开始查找you
+string flag="to";
+position=str.rfind(flag);//反向查找
+string substr="i";
+position=0;
+int i=1;
+while((position=str.find_first_of(substr,position))!=str.npos)
+{
+     postion++;
+}//可查找substr在str出现的所有位置，s.find_first_of(letter, pos))，意思是在s中寻找首个letter中有的字符，从pos开始搜索。
+find_first_of 函数最容易出错的地方是和find函数搞混。
+它最大的区别就是如果在一个字符串str1中查找另一个字符串str2，如果str1中含有str2中的任何字符，则就会查找成功，而find则不同；
+6.除了string中的find函数外，char[]数组也有强大的查找函数
+C++中有strstr、strchr等也有查找功能。函数说明如下
+char *strstr( const char *str, const char *substr );  返回指针，指向substr在字符串str中首次出现的位置。 
+char *strchr( const char *str, int ch );  返回指针，指向 str 中字符ch 首次出现的位置。 
+同样有 strrstr与strrchr函数实现从后开始查找
+7.与 char[ ] 的相互转换
+copy()，返回指针，赋值给char[ ]数组名
+c_str() ，返回 const 类型的指针
+data() ，将内容以字符数组的形式返回
+char strch[]="shrimp";
+string str="fish";
+strcpy(strch,str.c_str());
+cout<<strch<<endl;
+string str2="duck";
+strcpy(strch,str2.data());
+cout<<strch<<endl;
+7.分割字符串
+常用 strtok 和 substr 来分割字符串
 
+
+c++字符数组和字符串的区别：唯一的区别就是字符串末尾有一个'\0'，而字符数组是没有的. 
+char ch1[]="hello";//该串有6个字符,5个可见字符,因为是串,所以末尾自动加上'\0';共六个
+char ch2[]={'h','e','l','l','o'};//这样写就成了数组.是确确实实的5个字符2.
