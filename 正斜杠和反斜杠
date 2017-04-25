@@ -1,0 +1,12 @@
+绝对路径表示相对容易，例如
+pDummyFile =fopen("D:\\vctest\\glTexture\\texture\\dummy.bmp", "rb"); 
+给出了从盘符开始的全部路径，这里需要注意的是“\”要用双斜线"\\"，vc工程默认访问的目录是工程目录。
+相对路径有以下多种形式，如：
+pDummyFile = fopen("dummy.bmp", "rb"); 
+bmp文件就在vc工程目录下，和dsw文件同属一个目录。
+pDummyFile = fopen("..\\texture\\dummy.bmp", "rb"); 
+表示bmp文件在工程目录的同级目录texture中，因此路径是先退出工程目录再进入texture目录访问到bmp文件。“..”表示退到当前目录的上一级目录（父目录）
+pDummyFile =fopen(".\\texture\\dummy.bmp", "rb"); 
+表示bmp文件就在工程目录的子目录texture中，“.”表示当前默认目录，即vc工程目录，然后在进入其子目录texture访问到文件
+但在vc++编程中，由于vc有定义\x中的\为转义符，例如：\n表示换行，\t表示TAB等等，故在VC编程时要想输入\需输入\\，前面的\用于消除后面的\的转义含义。
+故路径c:\app\a.exe需输入c:\\app\\a.exe。但为了简便，C++现在也可使用反斜杠”/"来进行分割，快捷简单。
