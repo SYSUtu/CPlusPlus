@@ -1,0 +1,10 @@
+vector< vector<int> > b(10, vector<int>(5));//创建一个10*5的int型二维向量
+vector<vector<int>  > array2(3);//注意>和>之间的空格。
+这就是我们的关键，array2可以保存3个向量，向量的长度是可以改变的。array2[i]返回的是第i个向量。同理，array2[i][j]返回的是第i个向量中的第j个元素。
+vector<vector<int>  > array2(3);
+array2[1][2]=9;
+我保证你的程序会segement failed,原因就是你没有指定向量的大小。用push_back函数可以解决问题：array2[1].push_back(9);
+但是好象不太爽。就不能用operator[]吗？答案是肯定的。不过要多加几个步骤，如下：
+      for(int i=0;i<3;i++)
+         array2[i].resize(3);
+这样，你就定义了一个3X3的数组了（另一个3在 申明时定义的）。而且你可以随时改变它的大小。
