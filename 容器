@@ -1,0 +1,104 @@
+C++中有两种类型的容器：顺序容器和关联容器。
+顺序容器主要有vector、list、deque等。其中vector表示一段连续的内存，基于数组实现，list表示非连续的内存，基于链表实现，deque与vector类似，但是对首元素提供插入和删除的双向支持。
+关联容器主要有map和set。map是key-value形式，set是单值。map和set只能存放唯一的key，multimap和multiset可以存放多个相同的key。
+容器类自动申请和释放内存，因此无需new和delete操作。
+一、vector
+vector基于模板实现，需包含头文件vector。
+1.定义和初始化
+ vector<int> vec1;    //默认初始化，vec1为空
+ vector<int> vec2(vec1);  //使用vec1初始化vec2
+ vector<int> vec3(vec1.begin(),vec1.end());//使用vec1初始化vec2
+ vector<int> vec4(10);    //10个值为的元素
+ vector<int> vec5(10,4);  //10个值为的元素
+2.常用操作方法
+ vec1.push_back(100);            //添加元素
+ int size = vec1.size();         //元素个数
+ bool isEmpty = vec1.empty();    //判断是否为空
+ cout<<vec1[0]<<endl;        //取得第一个元素
+ vec1.insert(vec1.end(),5,3);    //从vec1.back位置插入5个值为3的元
+ //vec1.pop_back();              //删除末尾元素
+ //vec1.erase(vec1.begin(),vec1.end());//删除之间的元素，其他元素前移
+ cout<<(vec1==vec2)?true:false;  //判断是否相等==、！=、>=、<=...
+ vector<int>::iterator iter = vec1.begin();    //获取迭代器首地址
+ vector<int>::const_iterator c_iter = vec1.begin();   //获取const类型迭代器
+ //vec1.clear();                 //清空元素
+3.遍历
+//下标法
+int length = vec1.size();
+for(int i=0;i<length;i++)
+    {
+       cout<<vec1[i];
+    }
+cout<<endl<<endl;
+//迭代器法
+vector<int>::const_iterator iterator = vec1.begin();
+for(;iterator != vec1.end();iterator++)
+    {
+       cout<<*iterator;
+    }
+二、map
+C++中map容器提供一个键值对（key/value）容器，map与multimap差别仅仅在于multiple允许一个键对应多个值。需要包含头文件map。
+对于迭代器来说，可以修改实值，而不能修改key。Map会根据key自动排序。
+1.定义和初始化
+ map<int,string> map1;                  //空map
+2.常用操作方法
+ map1[3] = "Saniya";                    //添加元素
+ map1.insert(map<int,string>::value_type(2,"Diyabi"));//插入元素
+ //map1.insert(pair<int,string>(1,"Siqinsini"));
+ map1.insert(make_pair<int,string>(4,"V5"));
+ string str = map1[3];                  //根据key取得value，key不能修改
+ map<int,string>::iterator iter_map = map1.begin();//取得迭代器首地址
+ int key = iter_map->first;             //取得eky
+ string value = iter_map->second;       //取得value
+ map1.erase(iter_map);                  //删除迭代器数据
+ map1.erase(3);                         //根据key删除value
+ map1.size();                       //元素个数
+ map1.empty();                       //判断空
+ map1.clear();                      //清空所有元素
+ 3.遍历
+  for(map<int,string>::iterator iter = map1.begin();iter!=map1.end();iter++)
+    {
+       int keyk = iter->first;
+       string valuev = iter->second;
+    }
+   3.set
+   1 set容器的定义和使用
+
+与map一样，set容器存储的键也必须唯一，且不能修改。以一段范围内的元素初始化set对象，或在set对象中插入一组元素时，对于每个键，事实上都只添加了一个元素：
+
+// define a vector with 20 elements, holding two copies of each number from 0 to 9
+vector<int> ivec(20);
+for ( int i=0; i<10; ++i )
+{
+    ivec[2*i] = i;
+    ivec[2*i+1] = i;
+}
+// iset holds unique elements form ivec
+set<int> iset( ivec.begin(), ivec.end() );
+cout << ivec.size() << endl; // prints 20
+cout << iset.size() << endl; // prints 10
+上段代码，首先创建了一个名为ivec的int型vector容器，存储20个元素：0~9（包括9）中每个整数都出现了2次，然后用ivec中所有的元素初始化一个int型的set容器，且这个set容器仅含有10个不同的元素。 
+
+2 在set容器中添加元素
+
+// first
+set<string> mySet; // empty set
+mySet.insert("the"); // mySet now has one element
+mySet.insert("and"); // mySet now has two elements
+
+// second
+set<int> mySet2;  // empty set
+mySet2.insert( ivec.begin(), ivec.end() ); // mySet2 has 10 elements
+
+3 从set中获取元素
+set容器不提供下标操作符。为了通过键从set中获取元素，可使用find运算。
+如果只需简单地判断某元素是否存在，同样可以使用count运算，当然其返回值只能是1（存在）或0（不存在）：
+iset.find(1);   // returns iterator that refers to the element with key == 1
+iset.find(11);  // returns iterator == iset.end()
+iset.count(1);  // returns 1
+iset.count(11); // returns 0
+set中的键为const类型，在获得指向set中某元素的迭代器后，只能对其做读操作，而不能做写操作：
+// iter refers to the element with key == 1
+set<int>::iterator iter = iset.find(1);
+*iter = 11; // error; keys in a set are read-only
+cout << *iter << endl; // ok; can read the key
