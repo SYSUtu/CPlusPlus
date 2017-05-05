@@ -1,4 +1,4 @@
-#泛型算法
+# 泛型算法
 大多数算法都定义在头文件**algorithm**中。标准库还在头文件**numeric**中定义了一组数值泛型算法。它不会改变容器大小，不会直接添加或删除元素。
 
 `int val=42;`                     
@@ -14,7 +14,7 @@
 * 4.否则，find前进到下一个元素，重复执行步骤2与3.
 * 5.如果到达序列尾，find应停止。
 * 6.如果find到达序列尾，它应该返回一个指出元素未找到的值。此值和步骤三返回的值必须具有相同类型。
-##只读函数
+## 只读函数
 一些算法只会读取其输入范围的元素，而不改变元素，除了find，count还有accumulate。
 
 `int sum=accumulate(vec.cbegin(),vec.cend,0);`
@@ -23,7 +23,7 @@
 
 `equal(roster1.cbegin(),roster1.cend(),roster2.cbegin());`
 
-##写容器元素的算法
+## 写容器元素的算法
 一些算法会向输入范围写入元素。
 
 `fill(vec.begin(),vec.end(),0);`
@@ -37,7 +37,7 @@ replace_copy可以保留原序列不变。
 `replace_copy(ilst.cbegin(),ilst.cend(),back_inserter(ivec),0,42);`
 `//此调用后，ilst并未改变，ivec包含ilst的拷贝，不过原来在ilst中值为0的元素在ivec中变为42。`
 
-###介绍back_inserter
+### 介绍back_inserter
 一种保证算法有足够元素空间来容纳输出数据的方法是使用插入迭代器。通常情况，当我们通过一个迭代器向容器元素赋值的时候，值被赋予迭代器指向的元素。而当我们通过一个插入迭代器赋值时，一个与赋值号右侧相等的元素被添加到容器当中。back_inserter接受一个指向容器的引用，返回一个与该容器绑定的插入迭代器。当我们通过此迭代器赋值时，赋值运算符会调用push_back将一个具有给定值的元素添加到容器中：
 
 `vector<int>vec;`
