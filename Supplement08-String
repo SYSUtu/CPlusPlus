@@ -75,7 +75,8 @@ strcpy(strch,str2.data());
 cout<<strch<<endl;
 7.分割字符串
 常用 strtok 和 substr 来分割字符串
-
+8.string中的字符替换和删除
+swap(),replace(),erase()
 
 c++字符数组和字符串的区别：唯一的区别就是字符串末尾有一个'\0'，而字符数组是没有的. 
 char ch1[]="hello";//该串有6个字符,5个可见字符,因为是串,所以末尾自动加上'\0';共六个
