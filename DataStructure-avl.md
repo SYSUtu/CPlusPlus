@@ -163,5 +163,6 @@ AVL在插入和删除节点造成不平衡的时候需要对发生不平衡的�
     tree->height = maxh(height(tree->right), height(tree->left)) + 1;  
   
     return tree;  
-	}    
+	}  
+	
 整理自：http://blog.csdn.net/whucyl/article/details/17289841#
