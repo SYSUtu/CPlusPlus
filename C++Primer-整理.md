@@ -1,17 +1,7 @@
-## 1.1
-	int main(){
-	return 0;
-	}
-函数包括：返回类型，函数名，形参列表，函数体。
-## 1.2
-标准库定义了4个IO对象。分别为：cin，cout，cerr，clog。    
-endl：操纵符。写入的效果是结束当前行，并将与设备关联的缓冲区中的内容刷到设备中。
-## 1.3
+
+# 开始
 注释：单行注释，界定符对注释（不能嵌套）
-## 1.4
-### 如何判断哪个if...else...是一对
-当一个程序中出现多个if……else……的时候，也可能会引来一些麻烦的事情。因为每个if都具有和else配对的功能。那么我们在阅读一段程序的时候，怎么才能够知道哪个if和哪个else是在一起的呢？具体的规则是，else向上寻找最近的一个和它处于相同缩进位置的if配对，我们把这种规则理解为“门当户对”。
-### if...else if...else
+## if...else if...else
 	if(boolean_expression 1)
 	{
    	// 当布尔表达式 1 为真时执行
@@ -28,11 +18,9 @@ endl：操纵符。写入的效果是结束当前行，并将与设备关联的�
 	{
    	// 当上面条件都不为真时执行
 	}
-# 1.5类简介
-在c++中，我们通过定义一个类来定义自己的数据结构。区别类和struct
 
-## 字符串，向量和数组
-### 定义和初始化
+# 字符串，向量和数组
+## 定义和初始化
 		string s1;
 		string s2=s1;
 		string s3="hiya";
@@ -43,8 +31,8 @@ endl：操纵符。写入的效果是结束当前行，并将与设备关联的�
 * size（）函数返回的是一个string::size_type类型的值
 * 字面值可以和string对象相加
 * 处理string对象中的字符：基于范围FOR语句，可以使用islower,ispunct,isspace,isupper,tolower,toupper
-### 标准库类型vector
-#### 初始化
+## 标准库类型vector
+### 初始化
 		vetor<T> v1;
 		vetor<T> v2(v1);拷贝初始化
 		vetor<T> v2=v1;同上一种；直接初始化
@@ -60,8 +48,8 @@ endl：操纵符。写入的效果是结束当前行，并将与设备关联的�
 		vector<int> v3(10,1);
 		vector<int> v3{10,1};
 * 迭代器
-		vector<int>:;interator
-* 但凡用了迭代器的循环，都不要向迭代器所属的容器添加元素。
+		vector<int>:：interator
+* **但凡用了迭代器的循环，都不要向迭代器所属的容器添加元素。**
 * 理解复杂的数组申明：
 
 		int(*p)[10]=&arr;指向一个含有10个整数的数组
@@ -91,7 +79,7 @@ endl：操纵符。写入的效果是结束当前行，并将与设备关联的�
 	void print(int*);
 	void print(int[]);
 	void print(int[10]);//这里表示期望含有多少元素，实际不一定
-* 数组引用形参
+## 数组引用形参
 
 		void print(int (&arr)[10])
 		//同样int *arr[4]；
@@ -218,7 +206,7 @@ private：说明符后面的成员可以被类的成员函数访问，不能被�
 * list,forward_list,deque还支持push_front
 
 # 泛型算法
-大多数算法都定义在头文件**algorithm**中。标准库还在头文件**numeric**中定义了一组数值泛型算法。它不会改变容器大小，不会直接添加或删除元素。
+大多数算法都定义在头文件'algorithm'中。标准库还在头文件'numeric'中定义了一组数值泛型算法。它不会改变容器大小，不会直接添加或删除元素。
 
 `int val=42;`                     
 `auto resualt = find (vec.cbegin(),vec.cend(),val);`
